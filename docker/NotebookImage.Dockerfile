@@ -1,8 +1,8 @@
-ARG python_version="3.9"
-FROM jupyter/base-notebook:python-${python_version}
+ARG python_version="3.11"
+FROM quay.io/jupyter/base-notebook:python-${python_version}
 
 ARG python_version
-ARG arcgis_version="2.2.0"
+ARG arcgis_version="2.3.1"
 ARG sampleslink="https://github.com/Esri/arcgis-python-api/releases/download/v${arcgis_version}/samples.zip"
 ARG githubfolder="arcgis-python-api"
 ENV DOCKER_STACKS_JUPYTER_CMD="notebook"

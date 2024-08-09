@@ -1,4 +1,4 @@
-name: DockerBuild.NotebookImage
+name: DockerBuild.AzureFunctionsImage
 
 permissions:
   contents: read
@@ -50,7 +50,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ghcr.io/esri/arcgis-python-api-notebook
+            ghcr.io/esri/arcgis-python-api-azure-functions
           tags: |
             type=raw,value=${{ inputs.version }}-python${{ inputs.python_version }}
             type=raw,value=${{ inputs.version }},enable=${{ inputs.is_default_supported_python && github.ref_name == github.event.repository.default_branch }}
@@ -62,8 +62,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: ./docker
-          file: ./docker/NotebookImage.Dockerfile
+          context: .
+          file: ./docker/AzureFunctionsBaseImage.Dockerfile
           build-args: |
             python_version=${{ inputs.python_version }}
             arcgis_version=${{ inputs.version }}
